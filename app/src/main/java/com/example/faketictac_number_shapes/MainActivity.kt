@@ -1,46 +1,25 @@
 package com.example.faketictac_number_shapes
 
 import android.os.Bundle
+import android.graphics.Point
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.faketictac_number_shapes.ui.theme.NumberShapesTheme
 
+import com.example.faketictac_number_shapes.views.SquareDotsView
+
+/**
+ * Number Shapes game main activity view.
+ */
 class MainActivity : ComponentActivity() {
+
+    /**
+     * Method is responsible for loading activity view.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            NumberShapesTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
-            }
-        }
-    }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+        val squareDotsView = SquareDotsView(this);
+        setContentView(squareDotsView);
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    NumberShapesTheme {
-        Greeting("Android")
+        squareDotsView.addSquare(Point(100, 100), Point(300, 300))
     }
 }
